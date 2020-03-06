@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+	<main role="main" class="container">
+		<div>
+			<h1>Registration</h1>
+		</div>
+		<form action="/registration.html" method="post"
+			enctype="multipart/form-data">
+			
+			<input type="text" name="login" value="" placeholder="Логин" />
+			<input type="text" name="name" value="" placeholder="Имя" />
+			<input type="password" name="password1" value="" placeholder="Пароль" />
+			<input type="password" name="password2" value="" placeholder="Повторите пароль" />
+			<input type="submit" value="Регистрация">
+		</form>
+		
+		<div>
+			<a class="btn btn-primary" href="authorization.html">Вход в облако</a>
+		</div>
+		<div th:if="${error1}">Заполните все поля</div>
+		<div th:if="${error2}">Пароли должны совпадть</div>
+		
+	</main>
+
+</body>
+</html>

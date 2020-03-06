@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+	<main role="main" class="container">
+		<div>
+			<h1>Authorization</h1>
+		</div>
+		<form action="/authorization.html" method="post"
+			enctype="multipart/form-data">
+			<input type="text" name="login" value="" placeholder="Ваш логин"/>
+			<input type="password" name="password" value="" placeholder="Ваш пароль"/>
+			<input type="submit" value="Войти">
+				
+			<!--
+				
+			<div class="form-group">
+				<table class="table">
+					<tbody>
+						<tr th:each="user : ${users}">
+							<td th:text="${user.getName()}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			  -->
+
+
+		</form>
+		<div>
+			<a class="btn btn-primary" href="registration.html">Регистрация</a>
+			<a class="btn btn-primary" href="nordicCloud.html">Мои файлы</a>
+		</div>
+
+		<div th:if="${error}">Логин или пароль введены не верно</div>
+		<div th:if="${user}">
+			Вы вошли в систему как <span th:text="${user.name}"></span>
+		</div>
+	</main>
+
+</body>
+</html>

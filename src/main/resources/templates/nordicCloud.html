@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+	<main role="main" class="container">
+		<form action="/nordicCloud" method="post"
+			enctype="multipart/form-data">
+			<div class="form-group">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>My File</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="file : ${files}">
+							<td th:text="${file.getFileName()}"></td>
+							<td scope="col"><a class="btn btn-primary"
+								href="/downloadFile.html"
+								th:href="@{/download_file.html(id=${file.getId()})}">Скачать</a></td>
+							<td scope="col"><a class="btn btn-primary"
+								href="/delete_file.html"
+								th:href="@{/delete_file.html(file=${file.getId()})}">Удалить</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+		<div>
+			<a class="btn btn-primary" href="uploadCloud.html">Загрузить файл</a>
+			<a class="btn btn-primary" href="authorization.html">Авторизация</a>
+		</div>
+	</main>
+</body>
+</html>
