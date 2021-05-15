@@ -16,12 +16,12 @@ public class RegistrationController {
 	@Autowired
 	private FileService fileService;
 
-	@GetMapping(path = "/registration.html")
+	@GetMapping(path = "/registration.html") //Страница регистрации
 	public String registrationPage() {
 		return "registration";
 	}
 
-	@PostMapping(path = "/registration.html")
+	@PostMapping(path = "/registration.html") //Ввод и проверка данных для создания нового пользователя
 	public String registrationPage(@RequestParam(name = "login") String login, @RequestParam(name = "name") String name,
 			@RequestParam(name = "password1") String password1, @RequestParam(name = "password2") String password2,
 			Model model) throws UserAlreadyExistsException {

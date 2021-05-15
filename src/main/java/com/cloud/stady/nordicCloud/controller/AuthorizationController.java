@@ -17,12 +17,12 @@ public class AuthorizationController {
 	@Autowired
 	private FileService fileService;
 	
-	@GetMapping(path = "/authorization.html")
+	@GetMapping(path = "/authorization.html") //Страница авторизации
 	public String loginPage() {
 		return "authorization";
 	}
 	
-	@PostMapping(path = "/authorization.html")
+	@PostMapping(path = "/authorization.html") //Ввод и проверка данных пользователя
 	public String authorizationPage(@RequestParam(name = "login") String login, @RequestParam(name = "password") String password, Model model ) throws WrongPasswordException, NotFoundUserException {
 		var user = fileService.getUser(login, password);
 		if(user == null) {

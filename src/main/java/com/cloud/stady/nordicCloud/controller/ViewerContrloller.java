@@ -25,20 +25,20 @@ public class ViewerContrloller {
 	@Autowired
 	private FileService fileService;
 	
-	@GetMapping(path = "/nordicCloud.html")
+	@GetMapping(path = "/nordicCloud.html") //Страница отображения файлов пользователя
 	public String list(Model model) {
 		model.addAttribute("files", fileService.getList());
 		return "nordicCloud";
 	}
 	
-	@GetMapping(path = "/delete_file.html")
+	@GetMapping(path = "/delete_file.html") //Удаления файла по Id
 	public String deleteFile(@RequestParam(name = "file")long fileId) throws NotFoundFileException, WrongUserException {
 		fileService.deleteFile(fileId);
 		return "redirect:/nordicCloud.html";
 		
 	}
 	
-	@GetMapping(path = "/download_file.html")
+	@GetMapping(path = "/download_file.html") //Скачивание файла по Id
 	public ResponseEntity<InputStreamResource> fileDownload(@RequestParam(name = "id") long id) throws WrongUserException, NotFoundFileException, FileNotFoundException{
 		var metaOfFile = fileService.getFileById(id);
 		

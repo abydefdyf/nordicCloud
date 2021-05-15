@@ -16,12 +16,12 @@ public class UploadController {
 	@Autowired
 	private FileService fileService;
 
-	@GetMapping(path = "/uploadCloud.html")
+	@GetMapping(path = "/uploadCloud.html") //Страница загрузки файла
 	public String uploadCloud() {
 		return "uploadCloud";
 	}
 
-	@PostMapping(path = "/uploadCloud")
+	@PostMapping(path = "/uploadCloud") //Загрузка файла, регистрация его в системе
 	public String uploadCloud(@RequestParam(name = "file_upload") MultipartFile file) throws Exception {
 		fileService.addFile(file);
 

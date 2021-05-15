@@ -50,7 +50,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public List<UserFile> getList() {
+	public List<UserFile> getList() { //Получить список всех файлов и папок
 		var sql = "SELECT file_name, path_to_file, type_file, owner_id, id\r\n" + 
 				"	FROM public.files\r\n" + 
 				"	WHERE owner_id = ?";
@@ -67,7 +67,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public void addFile(MultipartFile file) {
+	public void addFile(MultipartFile file) { //Добавляет файл в систему
 		var sql = "INSERT INTO public.files(" + 
 				" file_name, path_to_file, type_file, owner_id)" + 
 				" VALUES (?, ?, ?, ?)";
@@ -90,7 +90,7 @@ public class FileServiceImpl implements FileService {
 	}
 	
 	@Override
-	public void deleteFile(long fileId) throws NotFoundFileException, WrongUserException {
+	public void deleteFile(long fileId) throws NotFoundFileException, WrongUserException { //Удаляем файл из системы
 		var file = getFileById(fileId);
 		var sql = "DELETE FROM public.files\r\n" + 
 				"	WHERE id = ?"; 
@@ -106,7 +106,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public UserFileDownloader getFileById(long id) throws NotFoundFileException, WrongUserException {
+	public UserFileDownloader getFileById(long id) throws NotFoundFileException, WrongUserException { //Скачиваем файл из сисетмы
 		var sql = "SELECT file_name, path_to_file, owner_id, id\r\n" + 
 				"	FROM public.files\r\n" + 
 				"	WHERE id = ?";
@@ -132,7 +132,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public Users getUser(String login, String password) throws WrongPasswordException, NotFoundUserException {
+	public Users getUser(String login, String password) throws WrongPasswordException, NotFoundUserException { //Авторизоваться в системе
 		var sql = "SELECT login, name, password, id\r\n" + 
 				"	FROM public.users\r\n" + 
 				"	WHERE login = ?";
@@ -161,7 +161,7 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public void newUser(String login, String name, String password) throws UserAlreadyExistsException {
+	public void newUser(String login, String name, String password) throws UserAlreadyExistsException { //Добавляем нового пользователя в систему
 		var sqlSelect = "SELECT login\r\n" + 
 				"	FROM public.users\r\n" + 
 				"	WHERE login = ?";

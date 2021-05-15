@@ -34,12 +34,12 @@ public interface FileService {
 	void deleteFile(long fileId) throws NotFoundFileException, WrongUserException;
 
 	/**
-	 * Возвращаем id файла
+	 * Скачиваем файл из сисетмы
 	 */
 	UserFileDownloader getFileById(long id) throws NotFoundFileException, WrongUserException;
 
 	/**
-	 * Возвращаем id пользователя
+	 * Авторизоваться в системе
 	 * 
 	 * @param id
 	 * @return
